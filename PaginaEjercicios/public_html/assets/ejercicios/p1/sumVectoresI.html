@@ -7,7 +7,19 @@
         <link rel="stylesheet" href="assets/css/plantillaEjercicios.css">
     </head>
     <body>
-        
+        <div class="container">
+            <h1>Suma de vectores de acuerdo a la posicion</h1>
+            <br><br>
+            <p>Escribe los vectores, separando los numeros con comas y sin espacios</p>
+            <input type="text" id="vector1" placeholder="Vector 1">
+            <label> + </label>
+            <input type="text" id="vector2" placeholder="Vector 2">
+            <br>
+            <input type="button" id="sumar" value="Sumar" onclick="sumaVectores()">
+        </div>
+        <div class="container" id="resultado">
+            
+        </div>
         <footer class="footer">
              <table>
                 <tr>
@@ -30,3 +42,15 @@
         </footer>
     </body>
 </html>
+<script type="text/javascript">
+    function sumaVectores(){
+        var vector1 = document.getElementById("vector1").value.split(",");
+        var vector2 = document.getElementById("vector2").value.split(",");
+        var vectorRes=[];
+        
+        for (var i = 0; i < vector1.length; i++){
+            vectorRes[i] = parseInt(vector1[i]) + parseInt(vector2[i]);
+        }
+        document.getElementById("resultado").innerHTML = vectorRes.join(",");
+    }
+</script>
