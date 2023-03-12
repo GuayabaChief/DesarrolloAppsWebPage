@@ -12,17 +12,22 @@
                 <form action="" method="post">
                     <div class="container">
                         <label for="nombreTxt">Nombre</label>
-                        <input type="text" name="nombreTxt" placeholder="Introduce su nombre" required><br>
+                        <input type="text" name="nombreTxt" id="nombre" placeholder="Introduce su nombre" required><br>
                         <label for="apatTxt">Apellido Paterno</label>
-                        <input type="text" name="apatTxt" placeholder="Introduce su apellido paterno" required><br>
+                        <input type="text" name="apatTxt" id="apat" placeholder="Introduce su apellido paterno" required><br>
                         <label for="amatTxt">Apellido Materno</label>
-                        <input type="text" name="amatTxt" placeholder="Introduce su apellido materno" required><br>
+                        <input type="text" name="amatTxt" id="amat" placeholder="Introduce su apellido materno" required><br>
+                        <label for="dia">Dia</label>
+                        <select name="dia" id="dia" required></select>
+                        <label for="mes"> Mes</label>
+                        <select name="mes" id="mes" required></select>
+                        <label for="año"> Año</label>
+                        <select name="año" id="año" required></select>
+                        <br>
+                        <button type="submit">Ok</button>
                     </div>
                 </form>
             </fieldset>
-        </div>
-        <div class="container">
-            <input type="submit" value="Ok"/>
         </div>
         <footer class="footer">
              <table>
@@ -46,3 +51,45 @@
         </footer>
     </body>
 </html>
+<script type="text/javascript">
+var diaMinMax = document.getElementById("dia");
+var mesMinMax = document.getElementById("mes");
+var añoMinMax = document.getElementById("año");
+
+for(var i = 1; i<=30; i++){
+    var opcionDia = document.createElement("option");
+    opcionDia.value = i;
+    opcionDia.innerHTML = i;
+    diaMinMax.appendChild(opcionDia);
+}
+
+for(var i = 1; i<=12; i++){
+    var opcionMes = document.createElement("option");
+    opcionMes.value = i;
+    opcionMes.innerHTML = i;
+    mesMinMax.appendChild(opcionMes);
+}
+
+for(var i = 2005; i<=2030; i++){
+    var opcionAño = document.createElement("option");
+    opcionAño.value = i;
+    opcionAño.innerHTML = i;
+    añoMinMax.appendChild(opcionAño);
+}
+
+document.querySelector('form').addEventListener('submit', function(event){
+    event.preventDefault();
+
+    var nombre = document.getElementById("nombre").value.toUpperCase();
+    var Apaterno = document.getElementById("apat").value.toUpperCase();
+    var Amaterno = document.getElementById("amat").value.toUpperCase();
+    var dia = document.getElementById("dia").value;
+    var mes = document.getElementById("mes").value;
+    var año = document.getElementById("año").value.substring(2,4);
+    
+    dia = dia.padStart(2, '0');
+    mes = mes.padStart(2, '0');
+    
+    alert("Su RFC es: \n"+Apaterno.substring(0,2)+Amaterno.substring(0, 1)+nombre.substring(0, 1)+año+dia+mes);
+});
+</script>
